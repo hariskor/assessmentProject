@@ -10,4 +10,9 @@ class Payment extends Model
     
     protected $fillable = array('amount');
 
+
+    public function client(){
+        return $this->belongsTo(Client::class,'client_id','id');
+    }
+
 }
