@@ -14,12 +14,12 @@ class ClientSeeder extends Seeder
     public function run()
     {
         $data = array(
-            array('name'=>'Taylor','surname'=>'Otwell'),
-            array('name'=>'Mohamed','surname'=>'Said'),
-            array('name'=>'Jeffrey','surname'=>'Way'),
-            array('name'=>'Phill','surname'=>'Sparks')
+            array('name'=>'Taylor','surname'=>'Otwell','created_at'=>'2020-01-01 00:00:01','updated_at'=>'2020-01-01 00:00:01'),
+            array('name'=>'Mohamed','surname'=>'Said','created_at'=>'2020-01-01 00:00:01','updated_at'=>'2020-01-01 00:00:01'),
+            array('name'=>'Jeffrey','surname'=>'Way','created_at'=>'2020-01-01 00:00:01','updated_at'=>'2020-01-01 00:00:01'),
+            array('name'=>'Phill','surname'=>'Sparks','created_at'=>'2020-01-01 00:00:01','updated_at'=>'2020-01-01 00:00:01')
         );
         Client::insert($data);
-        //
+        
     }
 }
