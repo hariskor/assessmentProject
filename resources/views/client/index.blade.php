@@ -412,51 +412,64 @@
   @endif
 
   <div class="container ">
-    <form>
+    <form method="GET" action="/client" style="padding-top:5em">
       <div class="row">
-      <div class="form-group col-4 row">
-        <label for="example-date-input" class=" col-form-label col-4">Start Date</label>
-          <input class="form-control col-8" type="date" id="example-date-input">
+        <div class="form-group col-4 row">
+          <label for="example-date-input" class=" col-form-label col-4">Start Date</label>
+          <input class="form-control col-8" type="date" name="startDate">
+        </div>
+        <div class="form-group col-4 row">
+@hasSection('navigation')
+    <div class="pull-right">
+        @yield('navigation')
+    </div>
+
+    <div class="clearfix"></div>
+@endif
+          <label for="example-date-input" class=" col-form-label col-4">End Date</label>
+          <input class="form-control col-8" type="date" name="endDate">
+        </div>
+        <div class='col-2'>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+        </div>
+
       </div>
-      <div class="form-group col-4 row">
-        <label for="example-date-input" class=" col-form-label col-4">End Date</label>
-          <input class="form-control col-8" type="date" id="example-date-input">
-      </div>
-  </div>
-      @if($clients)
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Last Name</th>
-            @if($clients[0]->payment)
-            <th scope="col">Amount</th>
-            <th scope="col">Timestamp</th>
-            @endif
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($clients as $user)
-          <tr>
-            <th scope="row">{{$user->id}}</th>
-            <td> {{$user->name}} </td>
-            <td> {{$user->surname}} </td>
-            @if($user->payment)
-            @if ($user->payment->amount)
-            <td>{{$user->payment->amount}}</td>
-            @endif
-            @if ($user->payment->created_at)
-            <td>{{$user->payment->created_at}}</td>
-            @endif
-            @endif
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-      @else
-      <h2>No Clients found</h2>
-      @endif
+    </form>
+    @if(count($clients))
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          @if($clients[0]->payment)
+          <th>Amount</th>
+          <th>Timestamp</th>
+          @endif
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($clients as $client)
+        <tr>
+          <th scope="row">{{$client->id}}</th>
+          <td> {{$client->name}} </td>
+          <td> {{$client->surname}} </td>
+          @if($client->payment)
+          @if ($client->payment->amount)
+          <td>{{$client->payment->amount}}</td>
+          @endif
+          @if ($client->payment->created_at)
+          <td>{{$client->payment->created_at}}</td>
+          @endif
+          @endif
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    @else
+    <h2>No Clients found</h2>
+    @endif
 </body>
 
 </html>
