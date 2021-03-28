@@ -14,7 +14,7 @@
 $ composer install
 
 ```
-The database name is set by default as (laravel). Create a database named accordingly, or change it to your prefered one. In this case, you will have to change the name on the .env file.
+The database name is set by default as "laravel". Create a database named accordingly, or change it to your prefered one. In this case, you will have to change the name on the .env file.
 `DB_DATABASE= yourDatabaseName`
 Set the username and password
 `DB_USERNAME= yourUsername`
